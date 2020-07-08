@@ -1,0 +1,50 @@
+<br>
+<br>
+<form [formGroup]="movieForm">
+Movie Id : <input formCotrolName="moviesId" type="text" #moviesId ><br><br>
+
+Movie Name : <input formControlName="moviesName" type="text" #moviesName ><br><br>
+
+<div *ngIf="movieForm.controls['moviesName'].hasError('required')">
+  <span [ngStyle]="{'color':'red'}">
+      Name Cannot be empty
+  </span>
+</div>
+
+<div *ngIf="movieForm.controls['moviesName'].hasError('pattern')">
+  <span [ngStyle]="{'color':'red'}">
+      Movie name should be alphanumeric
+  </span>
+</div>
+
+
+Give Rating : <input formControlName="moviesRating" type="text" #moviesRating ><br><br>
+<div *ngIf="movieForm.controls['moviesRating'].hasError('required')">
+  <span [ngStyle]="{'color':'red'}">
+      Ratings should not be empty
+  </span>
+</div>
+<div *ngIf="movieForm.controls['moviesRating'].hasError('pattern')">
+  <span [ngStyle]="{'color':'red'}">
+      Ratings should be between 1-5
+  </span>
+</div>
+
+<label for="genre">Select Genre : </label>
+
+<select #moviesGenre id="genre" formControlName="moviesGenre" >
+    <option value="none" selected disabled hidden> 
+        Select
+    </option> 
+  <option value="drama" select >Drama</option>
+  <option value="fiction">Fiction</option>
+  <option value="satire">Satire</option>
+</select>
+<div *ngIf="movieForm.controls['moviesGenre'].hasError('required')">
+  <span [ngStyle]="{'color':'red'}">
+     select Genre!!!!!
+  </span>
+</div>
+<br>
+<button (click)="addMovie(moviesId.value,moviesName.value,moviesRating.value,moviesGenre.value)">Submit</button>
+</form>

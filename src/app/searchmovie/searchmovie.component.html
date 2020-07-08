@@ -1,0 +1,19 @@
+<br><br><br>
+<label for="genre">Select Genre : </label>
+<select #moviesGenre id="genre"> 
+    <option value="none" selected disabled hidden> 
+        Select
+    </option> 
+  <option value="drama" select >Drama</option>
+  <option value="fiction">Fiction</option>
+  <option value="satire">Satire</option>
+</select>
+<br>
+<button (click)="searchMovie(moviesGenre.value)">Search</button>
+<hr>
+    <h3>Table</h3>
+    <table border="1px">
+       <tr *ngFor="let movie of localmovies" style="margin-bottom: 10px;">
+           <td>{{movie.moviesId}}</td><td>{{movie.moviesName}}</td><td>{{movie.moviesRating}}</td>
+        </tr>
+    </table>
